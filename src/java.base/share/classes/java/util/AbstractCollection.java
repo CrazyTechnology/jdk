@@ -3,10 +3,8 @@ package java.util;
 
 import jdk.internal.util.ArraysSupport;
 
-/**
- * This class provides a skeletal implementation of the {@code Collection}
- * interface, to minimize the effort required to implement this interface. <p>
- *
+/** 
+ *  实现了Collection 的大部分功能，能够最小化的减少实现此类的工作量。
  * To implement an unmodifiable collection, the programmer needs only to
  * extend this class and provide implementations for the {@code iterator} and
  * {@code size} methods.  (The iterator returned by the {@code iterator}
