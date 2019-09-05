@@ -32,7 +32,7 @@ import jdk.internal.util.ArraysSupport;
  * before adding a large number of elements using the {@code ensureCapacity}
  * operation.  This may reduce the amount of incremental reallocation.
  *
- * <p><strong>Note that this implementation is not synchronized.</strong>
+ * Note that this implementation is not synchronized.  这个类不是同步的，线程不安全
  * If multiple threads access an {@code ArrayList} instance concurrently,
  * and at least one of the threads modifies the list structurally, it
  * <i>must</i> be synchronized externally.  (A structural modification is
@@ -67,11 +67,10 @@ import jdk.internal.util.ArraysSupport;
  * exception for its correctness:  <i>the fail-fast behavior of iterators
  * should be used only to detect bugs.</i>
  *
- * <p>This class is a member of the
- * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
- * Java Collections Framework</a>.
+ *This class is a member of the
+ * Java Collections Framework  这个类似java集合框架的一员
  *
- * @param <E> the type of elements in this list
+ * @param <E> list中元素的类型
  */
 public class ArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable
@@ -84,22 +83,17 @@ public class ArrayList<E> extends AbstractList<E>
     private static final int DEFAULT_CAPACITY = 10;
 
     /**
-     * Shared empty array instance used for empty instances.
+     *声明一个空的数组实例，有参构造函数调用
      */
     private static final Object[] EMPTY_ELEMENTDATA = {};
 
     /**
-     * Shared empty array instance used for default sized empty instances. We
-     * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when
-     * first element is added.
+     * 无参构造函数调用，声明一个空数组
      */
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
     /**
-     * The array buffer into which the elements of the ArrayList are stored.
-     * The capacity of the ArrayList is the length of this array buffer. Any
-     * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA
-     * will be expanded to DEFAULT_CAPACITY when the first element is added.
+     *用来保存list中的元素
      */
     transient Object[] elementData; // non-private to simplify nested class access
 
@@ -112,15 +106,17 @@ public class ArrayList<E> extends AbstractList<E>
 
     /**
      * Constructs an empty list with the specified initial capacity.
-     *
-     * @param  initialCapacity  the initial capacity of the list
+     * 构造函数
+     * @param  initialCapacity  list的初始长度
      * @throws IllegalArgumentException if the specified initial capacity
      *         is negative
      */
     public ArrayList(int initialCapacity) {
         if (initialCapacity > 0) {
+            //实例化elementData对象，并指定长度
             this.elementData = new Object[initialCapacity];
         } else if (initialCapacity == 0) {
+            //如果初始容量为0就赋给空数组，这个是有参的构造函数调用的实例对象。
             this.elementData = EMPTY_ELEMENTDATA;
         } else {
             throw new IllegalArgumentException("Illegal Capacity: "+
